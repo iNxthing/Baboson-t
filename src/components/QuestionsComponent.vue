@@ -76,7 +76,7 @@ export default {
   methods: {
     getAllPreguntas: async function () {
       this.loading = true;
-      await this.axios.get('http://127.0.0.1:8000/api/quiz/questions')
+      await this.axios.get('/api/quiz/questions')
         .then(response => {
           this.questions = response.data;
           this.answers = new Array(response.data.length).fill(null);
@@ -99,7 +99,7 @@ export default {
 
     getResultado: async function () {
       this.calculating = true;
-      await this.axios.post('http://127.0.0.1:8000/api/quiz/result', {
+      await this.axios.post('/api/quiz/result', {
         answers: this.questions.map((question, i) => ({
           questionId: question.id,
           optionId: this.answers[i]
